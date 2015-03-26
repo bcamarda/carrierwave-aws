@@ -1,6 +1,5 @@
 module CarrierWave
   module Storage
-    include AWS::S3
     class AWS < Abstract
       def self.connection_cache
         @connection_cache ||= {}
@@ -22,7 +21,7 @@ module CarrierWave
 
       def connection
         @connection ||= begin
-          self.class.connection_cache[credentials] ||= ::AWS::S3.new(*credentials)
+          self.class.connection_cache[credentials] ||= ::AWS::S3::Client.new(*credentials)
         end
       end
 
