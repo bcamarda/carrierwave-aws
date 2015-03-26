@@ -1,7 +1,6 @@
-require 'aws/s3'
-
 module CarrierWave
   module Storage
+    include 'aws/s3'
     class AWS < Abstract
       def self.connection_cache
         @connection_cache ||= {}
